@@ -29,28 +29,46 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'DRP',
+        'brandLabel' => "DRP",
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+       $menuItems = [
+                ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Jenis Problem', 'url' => ['/jenis-masalah']],
+            ['label' => 'Problem', 'url' => ['/masalah']],
+            ['label' => 'Pegawai', 'url' => ['/pegawai']],
+            ['label' => 'Laporan', 'url' => ['/masalah2']],
+            ];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            
+          
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Login', 'url' => ['/user/login']]
             ) : (
-                'options' => ['class' => 'navbar-nav navbar-right'],
-                'items' => [
-                ['label' => 'Beranda', 'url' => ['/site/index']],
-            ['label' => 'Problem', 'url' => ['/masalah']],
-            ['label' => 'Pegawai', 'url' => ['/pegawai']]
-        ]
+                '<li>'
+                . Html::beginForm(['/user/logout'], 'post')
+                . Html::submitButton(
+                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>' 
             )
         ],
     ]);
+    if(!empty(Yii::$app->user->identity->username)){
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'items' => $menuItems,
+        ]);
+    }else 
+    {
+
+    }
     NavBar::end();
     ?>
 
@@ -75,3 +93,5 @@ AppAsset::register($this);
 </body>
 </html>
 <?php $this->endPage() ?>
+
+

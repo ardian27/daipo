@@ -1,18 +1,19 @@
 <?php
-
+use yiister\gentelella\assets\Asset;
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Dailly Report Program';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Daily Report Problem</h1>
+        <h2>Daily Report Problem</h2>
+<?php 
+?>
 
-        <h3>Rumah Sakit Umum Daerah Arifin Achmad</h1>
-        <h3>Provinsi Riau</h1>
-            <br><br><br><br><br><br><br>
-        <p><a class="btn btn-lg btn-success" href="index.php?r=masalah%2Fcreate">Buat Laporan</a></p>
+<img src='img/rsud.png' alt='RSUD Aripin Achmad' />
+        <h4>Rumah Sakit Umum Daerah Arifin Achmad</h4>
+        <h4>Provinsi Riau</h4>
     </div>
 
     <div class="body-content">

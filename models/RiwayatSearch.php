@@ -8,12 +8,12 @@ use yii\data\ActiveDataProvider;
 use app\models\Riwayat;
 
 /**
- * RiwayatSearch represents the model behind the search form of `app\models\Riwayat`.
+ * RiwayatSearch represents the model behind the search form about `app\models\Riwayat`.
  */
 class RiwayatSearch extends Riwayat
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
@@ -24,7 +24,7 @@ class RiwayatSearch extends Riwayat
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function scenarios()
     {
@@ -43,8 +43,6 @@ class RiwayatSearch extends Riwayat
     {
         $query = Riwayat::find();
 
-        // add conditions that should always apply here
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -57,7 +55,6 @@ class RiwayatSearch extends Riwayat
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'id_riwayat' => $this->id_riwayat,
             'id_tiket' => $this->id_tiket,
